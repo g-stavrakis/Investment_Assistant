@@ -1,0 +1,8 @@
+field,hit_rate,mrr
+question_vector,86.42,74.4
+answer_vector,63.92,54.51
+context_vector,82.34,67.96
+question_answer_vector,86.86,75.48
+answer_context_vector,84.62,72.39
+question_context_vector,87.65,76.79
+question_answer_context_vector,88.04,76.64
