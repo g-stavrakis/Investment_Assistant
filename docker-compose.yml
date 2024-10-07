@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  # app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8502:8502"
+  #   environment:
+  #     - OPENAI_API_KEY=${OPENAI_API_KEY}  # Reads the OpenAI API key from an environment variable or .env file
+  #     - STREAMLIT_SERVER_PORT=8502
+  #   depends_on:
+  #     - elasticsearch

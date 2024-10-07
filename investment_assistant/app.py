@@ -14,7 +14,7 @@ st.set_page_config(page_title="LLM Investment Assistant", page_icon="🧑‍💻
 model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
 
 # Read the prepared data
-data = pd.read_csv('data/investment_data.csv')
+data = pd.read_csv('../data/investment_data.csv')
 # Explore the first rows of data
 companies = sorted(list(data['company'].unique()))
 
