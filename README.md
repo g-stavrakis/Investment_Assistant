@@ -9,7 +9,7 @@ Investors and traders often face challenges when analyzing 10-K reports from lar
 
 The Investment Assistant is an LLM-powered QA RAG system that breaks 2023 10-K financial reports from 60+ large companies into meaningful chunks, addresses these challenges by allowing users to interact with the reports in real time. This enables quick retrieval of key insights, simplifies complex financial data, and provides accurate, context-aware responses to specific queries. By offering immediate access to critical financial information, risks, and opportunities, the tool empowers investors to make informed decisions and act swiftly on newly released data, staying ahead of market movements.
 
-<img src="images/application.png" width="500" height="900">
+<img src="images/application.png">
 
 
 
