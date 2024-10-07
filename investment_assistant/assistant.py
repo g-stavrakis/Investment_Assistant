@@ -6,14 +6,12 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from .envrc for the Chat GPT
-load_dotenv("../.envrc")
 
-# Initialize the openai instance
-client = OpenAI()
 
 # Create the hybrid search function for information retrieval
 def document_search(query, vector, company, a = 0.75):
+    # Initialize the client 
+    es_client = Elasticsearch('http://localhost:9200')
     # This is the query for the vector search with the best field 
     vector_query = {
         "field": 'question_answer_context_vector',
@@ -54,7 +52,7 @@ def document_search(query, vector, company, a = 0.75):
     }
 
     es_results = es_client.search(
-        index=index_name,
+        index="investment-info",
         body=search_query
     )
     
@@ -101,6 +99,10 @@ def prompt_generation(query, retrieved_docs, prompt_template = prompt_template):
 
 # Create the function to request an answer from an LLM
 def ask_llm(prompt, model='gpt-3.5-turbo'):
+    # Load environment variables from .envrc for the Chat GPT
+    load_dotenv(os.path.join(os.path.dirname(__file__), "../.envrc"))
+    # Initialize the openai instance
+    client = OpenAI()
     # Create the request body and make the request
     response = client.chat.completions.create(
         model=model,

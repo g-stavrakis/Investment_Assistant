@@ -1,9 +1,17 @@
 import streamlit as st
 import pandas as pd
 from assistant import investment_assistant
+from sentence_transformers import SentenceTransformer
+from openai import OpenAI
+from dotenv import load_dotenv
+import os
+
 
 # Set the page configuration
 st.set_page_config(page_title="LLM Investment Assistant", page_icon="🧑‍💻", layout="centered")
+
+# Initialize the selected model to create the embeddings
+model = SentenceTransformer("multi-qa-MiniLM-L6-cos-v1")
 
 # Read the prepared data
 data = pd.read_csv('data/investment_data.csv')
@@ -46,7 +54,7 @@ st.markdown("This nice assistant has thoroughly reviewed the comprehensive 2023 
 
 # Dropdown slider to selected the company to examine
 options = companies
-selected_option = st.selectbox("Select a company:", options)
+selected_company = st.selectbox("Select a company:", options)
 
 # Text input widget for user's question
 user_input = st.text_input("Ask the Expert")
@@ -54,8 +62,10 @@ user_input = st.text_input("Ask the Expert")
 # Button to generate response
 if st.button("Generate Response", key="generate"):
     if user_input:
+        # Create the vector of the query
+        vector_query = model.encode(user_input)
         # Simulate LLM model response (replace with actual LLM call)
-        response = investment_assistant(user_input)
+        response = investment_assistant(user_input,vector_query,selected_company)
         st.success(response)
     else:
         st.error("Please enter a valid question.")
