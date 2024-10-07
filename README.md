@@ -1,5 +1,5 @@
 # Investment Assistant
-
+<img src="images/pexels-anna-nekrashevich-6801874.jpg" width="900" height="500">
 
 # Problem Description
 
