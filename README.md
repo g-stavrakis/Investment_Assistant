@@ -18,6 +18,34 @@ The Investment Assistant is an LLM-powered QA RAG system that breaks 2023 10-K f
 
 # Dataset
 
-
 # Code
+
+# Running the Application
+To run the application you need to follow the below steps:
+
+1. Install the dependencies for the project
+```bash
+pip intall requirements.txt
+```
+2. Set up your openAI API key into an environmental variable
+
+Copy .envrc_template into .envrc and insert your key there. - the .envrc will be picked up by the .gitignore file
+
+3. Run the docker-compose file to initialize all the services used in the application - such as elastic search
+```bash
+docker-compose up --build
+```
+4. Then connect to the application's folder
+```bash
+cd investment_assistant
+```
+5. Run this command to fetch all files in the elastic search index
+```bash
+python db_prep.py
+```
+6. Run the streamlit application
+```bash
+streamlit run app.py
+```
+7. Access the application from http://localhost:8501
 
