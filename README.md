@@ -9,6 +9,14 @@ Investors and traders often face challenges when analyzing 10-K reports from lar
 
 The Investment Assistant is an LLM-powered QA RAG system that breaks 2023 10-K financial reports from 60+ large companies into meaningful chunks, addresses these challenges by allowing users to interact with the reports in real time. This enables quick retrieval of key insights, simplifies complex financial data, and provides accurate, context-aware responses to specific queries. By offering immediate access to critical financial information, risks, and opportunities, the tool empowers investors to make informed decisions and act swiftly on newly released data, staying ahead of market movements.
 
+<img src="images/application.png" width="500" height="900">
+
+
+
+# RAG Architecture
+
+<img src="images/rag.png" width="900" height="500">
+
 # Technology Stack
 
 - Python 3.9
@@ -62,7 +70,7 @@ Then for the hybrid search we saw that 0.75 of the total search score should be 
 
 So from this analysis we will use hybrid search with score = 0.75 x vector_search + 0.25 x keyword search
 
-4. [rag_method_evaluation.ipynb.ipynb](rag_evaluation/rag_method_evaluation.ipynb.ipynb) - To evaluate different models with the results
+4. [rag_method_evaluation.ipynb](rag_evaluation/rag_method_evaluation.ipynb.ipynb) - To evaluate different models with the results
 
 Besed on the results we concluded we should use the gpt-3.5-turbo because it has better results in a smaller cost
 | Statistic | GPT-3.5-Turbo   | GPT-4o-Mini    |
@@ -76,8 +84,10 @@ Besed on the results we concluded we should use the gpt-3.5-turbo because it has
 | 75%       | 0.906797        | 0.890118       |
 | max       | 1.000000        | 1.000000       |
 
-
-
+5. Lastly, after this analysis we create all the utilities of the application in the below files
+- [db_prep.py](investment_assistant/db_prep.py) - with the initialization and indexing of QA data
+- [assistant.py](investment_assistant/assistant.py) - with the optimized rag system
+- [app.py](investment_assistant/app.py) - with the Streamlit application
 
 # Running the Application
 To run the application you need to follow the below steps:
